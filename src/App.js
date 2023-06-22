@@ -1,9 +1,15 @@
+import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import LoginPage from './components/loginPage.jsx';
 import RegisterPage from './components/registerPage.jsx';
-import './services/firebase.js';
 import HomePage from './components/homePage.jsx';
-import Admin from "./components/admin.jsx";
+import Admin from './components/admin.jsx';
+
+
+
+
+
+
 
 function App() {
   return (

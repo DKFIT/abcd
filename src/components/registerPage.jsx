@@ -12,28 +12,29 @@ export default function RegisterPage() {
 
   const handleRegister = async (event) => {
     event.preventDefault();
-
+  
     // Check if passwords match
     if (password !== passwordConfirmation) {
       setError("Passwords do not match");
       return;
     }
-
+  
     try {
       const auth = getAuth();
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-
+  
+      // Update user profile display name
       await updateProfile(userCredential.user, {
         displayName: name,
       });
-
+  
       const database = getDatabase();
       const userRef = ref(database, `users/${userCredential.user.uid}`);
       await set(userRef, {
         name,
         email,
       });
-
+  
       // Redirect or perform any other actions after successful registration
       window.location.href = "/";
     } catch (error) {
